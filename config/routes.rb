@@ -9,4 +9,7 @@ devise_for :customers, controllers: {
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
 }
+namespace :admin do
+  resources :items, only: [:index]
+end
 end
