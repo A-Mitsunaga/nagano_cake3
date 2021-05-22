@@ -1,25 +1,26 @@
 class Admin::ItemsController < ApplicationController
 
-  def index
-    @item = Item.new
-    @items = Item.all
-  end
-
   def new
-    #@item_image = ItemImage.new
     @item = Item.new
   end
 
   def create
-    #@item_image = ItemImage.new
-    #@item_image.save
-    #redirect_to admin_items_path
+    item = Item.new(item_params)
+    item.save
+    redirect_to '/admin/items'
+  end
+
+   def index
     @item = Item.new
-    @item.save
-    redirect_to admin_items_path
+    @items = Item.all
   end
 
   def show
+  end
+
+private
+  def item_params
+    params.require(:item).permit(:name, :introduction, :price, :is_active, :genre_id)
   end
 
 end
