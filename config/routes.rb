@@ -10,6 +10,8 @@ devise_for :customers, controllers: {
   registrations: 'customers/registrations'
 }
 namespace :admin do
-  resources :items, only: [:index]
+  resources :items, only: [:new,:index, :show, :edit, :update, :destroy]
+  post '/items/new' => 'items#create'
 end
+
 end
