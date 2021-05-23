@@ -2,6 +2,7 @@
 <%= form_with model:@item, url:"/admin/items/#{@item.id}", local:true do |f| %>
 
 <h4>商品画像</h4>
+<%= f.attachment_field :image %>
 
 <h4>商品名</h4>
 <%= f.text_field :name %>
