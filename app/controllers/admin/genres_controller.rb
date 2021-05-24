@@ -1,12 +1,8 @@
 class Admin::GenresController < ApplicationController
 
-  def new
-    @genre = Genre.new
-  end
-
   def create
    genre = Genre.new
-   genre.save
+   genre.save(genre_params)
    redirect_to admin_genres_path
   end
 
