@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 root :to => 'public/homes#top'
+get '/about' => 'public/homes#about'
 devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -14,6 +15,7 @@ devise_for :customers, controllers: {
  namespace :public do
   resources :items, only: [:index, :show]
   resources :customers, only: [:top, :show]
+
 end
 
 
