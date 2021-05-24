@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+root :to => 'homes#top'
 devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
@@ -10,13 +11,11 @@ devise_for :customers, controllers: {
   registrations: 'customers/registrations'
 }
 
-
- namespace :public do
-  root to: 'homes#top'
-  get '/about' => 'homes#about'
+ #namespace :public do
   resources :items, only: [:index, :show]
+  resources :customers, only: [:show]
+#end
 
- end
 
 namespace :admin do
   resources :items, except: [:create]
@@ -24,5 +23,4 @@ namespace :admin do
   resources :genres, only: [:index, :new, :edit, :update]
   post '/genres/new' => 'genres#create'
 end
-
 end
