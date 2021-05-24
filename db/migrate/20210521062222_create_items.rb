@@ -1,7 +1,7 @@
 class CreateItems < ActiveRecord::Migration[5.2]
   def change
     create_table :items do |t|
-      t.integer :genre_id, foreign_key: true
+      t.integer :genre_id
       t.string :name
       t.string :image_id
       t.text :introduction
@@ -9,5 +9,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.boolean :is_active
       t.timestamps
     end
+    add_foreign_key :items, :genres
   end
 end
