@@ -1,42 +1,49 @@
 <h2>新規会員登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: @user, url: new_customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
   <%= render "customers/shared/error_messages", resource: resource %>
 
 <div class="field">
     <%= f.label :名前 %>
-    （姓）<input type="text" placeholder="令和" ></input>　（名）<input type="text" placeholder="道子" ></input></br>
+     (姓) <%= f.text_field :last_name, autofocus: true %>
+      (名) <%= f.text_field :first_name, autofocus: true %>
+    <!--（姓）<input type="text" placeholder="令和" ></input>　（名）<input type="text" placeholder="道子" ></input></br>-->
 </div>
 
 
  <div class="field">
     <%= f.label :フリガナ %>
-    （セイ）<input type="text" placeholder="レイワ" ></input>　（メイ）<input type="text" placeholder="ハナコ" ></input></br>
+    　(セイ) <%= f.text_field :last_name, autofocus: true %>
+    （メイ）<%= f.text_field :first_name, autofocus: true %>
+    <!--（セイ）<input type="text" placeholder="レイワ" ></input>　（メイ）<input type="text" placeholder="ハナコ" ></input></br>-->
   </div>
 
 
   <div class="field">
     <%= f.label :メールアドレス %>
-    <!--<input type="text" placeholder="sample@example.com" ></input>-->
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <!--<input type="text" placeholder="sample@example.com" ></input>-->
   </div>
 
 
 <div class="field">
   <%= f.label :郵便番号（ハイフンなし） %>
-  <input type="text" placeholder="0000000" ></input>
+  <%= f.text_field :postal_code, autofocus: true %>
+  <!--<input type="text" placeholder="0000000" ></input>-->
 </div>
 
 
 <div class="field">
   <%= f.label :住所 %>
-  <input type="text" placeholder="東京都渋谷区代々木神園町0-0" ></input>
+    <%= f.text_field :address, autofocus: true %>
+  <!--<input type="text" placeholder="東京都渋谷区代々木神園町0-0" ></input>-->
 </div>
 
 
 <div class="field">
   <%= f.label :電話番号（ハイフンなし） %>
-  <input type="text" placeholder="00000000000" ></input>
+  <%= f.text_field :telephone_number, autofocus: true %>
+  <!--<input type="text" placeholder="00000000000" ></input>-->
 </div>
 
  <div class="field">
