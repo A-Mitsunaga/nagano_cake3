@@ -9,6 +9,8 @@ devise_for :customers, controllers: {
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
 }
+
+
  namespace :public do
   root to: 'homes#top'
   get '/about' => 'homes#about'
