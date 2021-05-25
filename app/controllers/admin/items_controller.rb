@@ -13,12 +13,6 @@ class Admin::ItemsController < ApplicationController
   def index
     @item = Item.new
     @items = Item.all
-    # if params[:genre_id]
-      # @genre = Genre.find(params[:genre_id])
-      # @items = @genre.posts.all
-    # else
-      # @items = Item.all
-    # end
   end
 
   def show
