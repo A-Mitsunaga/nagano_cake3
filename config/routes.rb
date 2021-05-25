@@ -6,8 +6,8 @@ get '/customers/my_page' => 'customers#show'
 get '/customers/unsubscribe' => 'customers#unsubscribe'
 patch '/customers/withdrawal' => 'customers#withdrawal'
 
-resources :items, only: [:index, :show]
 resources :customers, only: [:edit, :update]
+resources :items, only: [:index, :show]
 
 devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -19,6 +19,8 @@ devise_for :customers, controllers: {
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
 }
+
+post '/customers/sign_up' => 'customers/registrations#create'
 
 namespace :admin do
   resources :items, except: [:create]
