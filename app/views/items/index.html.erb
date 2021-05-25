@@ -1,9 +1,8 @@
 <h1>商品一覧</h1>
 <% @items.each do |item| %>
-
 <%= attachment_image_tag item, :image, format: 'jpeg', size: "100x100" %>
 
 <p>商品名</p>
-<span><%= link_to item.name, "/public/items/#{item.id}" %></span>
+<span><%= link_to item.name, "/items/#{item.id}" %></span>
 
 <% end %>
