@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-root :to => 'public/homes#top'
-get '/about' => 'public/homes#about'
+root :to => 'homes#top'
+get '/about' => 'homes#about'
 devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
