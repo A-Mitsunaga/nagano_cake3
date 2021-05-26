@@ -27,6 +27,7 @@ namespace :admin do
   post '/items/new' => 'items#create'
   resources :genres, only: [:index, :new, :edit, :update]
   post '/genres/new' => 'genres#create'
+  resources :customers, only: [:index, :show, :edit, :update]
 end
 
 
