@@ -8,7 +8,10 @@ patch '/customers/withdrawal' => 'customers#withdrawal'
 
 resources :customers, only: [:edit, :update]
 resources :items, only: [:index, :show]
-resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
+resources :orders, only: [:new, :create, :index, :show]
+post '/orders/confirm' => 'orders#confirm'
+get '/orders/thanks' => 'orders#thanks'
+
 
 devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -30,6 +33,7 @@ namespace :admin do
   resources :genres, only: [:index, :new, :edit, :update]
   post '/genres/new' => 'genres#create'
   resources :customers, only: [:index, :show, :edit, :update]
+  resources :orders, only: [:show, :update]
 end
 
 
