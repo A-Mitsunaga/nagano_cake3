@@ -20,7 +20,7 @@ devise_for :customers, controllers: {
   registrations: 'customers/registrations'
 }
 
-post '/customers/sign_up' => 'customers/registrations#create'
+#post '/customers/sign_up' => 'customers/registrations#create'
 
 namespace :admin do
   resources :items, except: [:create]
@@ -28,5 +28,6 @@ namespace :admin do
   resources :genres, only: [:index, :new, :edit, :update]
   post '/genres/new' => 'genres#create'
 end
+
 
 end
