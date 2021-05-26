@@ -9,11 +9,12 @@ patch '/customers/withdrawal' => 'customers#withdrawal'
 resources :customers, only: [:edit, :update]
 resources :items, only: [:index, :show]
 
-devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
+devise_for :admin, controllers: {
+  sessions:      'admin/sessions',
+  passwords:     'admin/passwords',
+  registrations: 'admin/registrations'
 }
+#admins→adminに変更
 devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
