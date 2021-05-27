@@ -9,7 +9,7 @@ end
 
 private
   def list_params
-    params.require(:item).permit(:name, :introduction, :image)
+    params.require(:item).permit(:name, :introduction, :image, :genre_id, :price, :is_active)
   end
 
 end

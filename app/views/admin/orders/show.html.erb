@@ -1,1 +1,31 @@
 <p>注文履歴詳細</p>
+
+<h6>購入者</h6>
+<h6>注文日</h6>
+<h6>配送先</h6>
+<h6>支払方法</h6>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+     <%= @items.each do |item| %>
+     <%# genre.genre_id.each do |genre| %>
+     <tr>
+       <td><%= link_to customer.name, "/admin/customers/#{customer.id}" %></td>
+       <td><%= item.price %></td>
+       <td><%= item.amount %></td>
+       <td><%#=小計 %></td>
+     </tr>
+       <% end %>
+       <%# end %>
+  </tbody>
+</table>
+
