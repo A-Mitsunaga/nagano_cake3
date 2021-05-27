@@ -16,6 +16,8 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @items = Item.all
   end
+
 
 end
