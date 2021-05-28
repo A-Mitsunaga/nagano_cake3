@@ -12,7 +12,8 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @item = Item.new
-    @items = Item.all
+    #@items = Item.order("created_at ASC").params[:page].per(5)
+    @items = Item.page(params[:page]).reverse_order
   end
 
   def show
