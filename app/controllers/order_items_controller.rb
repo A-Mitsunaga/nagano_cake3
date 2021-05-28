@@ -1,12 +1,12 @@
-class DeliveriesController < ApplicationController
+class OrderItemsController < ApplicationController
 
   def index
   end
 
-  def create
+  def edit
   end
 
-  def edit
+  def create
   end
 
   def update
@@ -14,6 +14,5 @@ class DeliveriesController < ApplicationController
 
   def destroy
   end
-
 
 end

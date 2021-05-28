@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def new
   end
 
@@ -18,6 +17,4 @@ class OrdersController < ApplicationController
   def show
     #@items = Item.all
   end
-
-
 end
