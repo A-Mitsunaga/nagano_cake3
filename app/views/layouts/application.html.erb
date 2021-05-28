@@ -4,10 +4,17 @@
     <title>NaganoCake3</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <div class="container">
+    <a class="navbar-brand" href="/"><span>Nagano Cake</span></a>
+
+
 
   <body>
     <% if customer_signed_in? %>
@@ -15,19 +22,33 @@
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
     <% else %>
-      <li>
-        <%= link_to "About", about_path %>
-      </li>
-      <li>
-        <%= link_to "商品一覧", items_path %>
-      </li>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
+      <!--<li>-->
+        <%#= link_to "About", about_path %>
+      <!--</li>-->
+  <div class="text-right">
+    <button type="button" class="btn btn-light"><%= link_to "About", about_path %></button>
+    <button type="button" class="btn btn-light"> <%= link_to "商品一覧", items_path %></button>
+    <button type="button" class="btn btn-light"> <%= link_to "新規登録", new_customer_registration_path %></button>
+    <button type="button" class="btn btn-light"><%= link_to "ログイン", new_customer_session_path %></button>
+  </div>
+
+      <!--<li>-->
+        <%#= link_to "商品一覧", items_path %>
+      <!--</li>-->
+      <!--<li>-->
+        <%#= link_to "新規登録", new_customer_registration_path %>
+      <!--</li>-->
+      <!--<li>-->
+        <%#= link_to "ログイン", new_customer_session_path %>
+      <!--</li>-->
+
+
     <% end %>
+  </div>
+</nav>
     <%= yield %>
   </body>
 </html>
+    </div>
+  </div>
+</nav>
