@@ -9,9 +9,11 @@ patch '/customers/withdrawal' => 'customers#withdrawal'
 resources :customers, only: [:edit, :update]
 resources :items, only: [:index, :show]
 
-#resources :orders, only: [:new, :create, :index, :show]
-#post '/orders/confirm' => 'orders#confirm'
-#get '/orders/thanks' => 'orders#thanks'
+resources :orders, only: [:new, :create, :index, :show]
+post '/orders/confirm' => 'orders#confirm'
+get '/orders/thanks' => 'orders#thanks'
+
+resources :order_items, only: [:index, :edit, :create, :update, :destroy]
 
 resources :cart_items, only: [:index, :update, :create]
 delete '/cart_items/:id' => 'cart_items#destroy'
