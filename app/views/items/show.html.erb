@@ -1,10 +1,20 @@
-<%= attachment_image_tag @item, :image, format: 'jpeg', size: "200x200" %>
+<div class="text-center">
+<%= attachment_image_tag @item, :image, format: 'jpeg', size: "150x150" %>
 
-<h1><%= @item.name %></h1>
 
+<h4><%= @item.name %></h4>
 <p><%= @item.introduction %></p>
+<h4>¥<%= @item.price %></h4>
 
-<p>¥<%= @item.price %></p>
+<select>
+  <option>個数選択</option>
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
 
-個数選択
-<%= link_to "カートに入れる", cart_items_path %>
+
+<%= link_to 'カートに入れる', cart_items_path, class: "btn  btn-success" %>
+</div>

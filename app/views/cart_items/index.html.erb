@@ -5,7 +5,7 @@
     <tr>
       <th>商品名</th>
       <th>単価（税込）</th>
-      <th>ジャンル</th>
+      <th>数量</th>
       <th></th>
     </tr>
   </thead>
@@ -14,12 +14,55 @@
      <%# genre.genre_id.each do |genre| %>
      <tr>
        <td><%= item.name %></td>
-       <td><%= item.price %></td>
-       <td><%#= order.amount %></td>
+       <td><%#= @items.price %></td>
+       <td><%#= @items.amount %></td>
        <td><%#　小計　 %></td>
-       <td><%= link_to "削除する", cart_items_path, method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+       <td><%#= link_to '削除する', cart_items_path, method: :delete, data: { confirm: '本当に削除しますか?' }, class: "btn  btn-danger" %></td>
      </tr>
        <% end %>
        <%# end %>
+  </tbody>
+</table>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">商品名</th>
+      <th scope="col">単価（税込）</th>
+      <th scope="col">数量</th>
+      <th scope="col">小計</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry the Bird</td>
+      <td>@twitter</td>
+      <td>fat</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Larry the Bird</td>
+      <td>@twitter</td>
+      <td>genre</td>
+      <td></td>
+    </tr>
   </tbody>
 </table>
