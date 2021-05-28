@@ -8,9 +8,10 @@ patch '/customers/withdrawal' => 'customers#withdrawal'
 
 resources :customers, only: [:edit, :update]
 resources :items, only: [:index, :show]
-resources :orders, only: [:new, :create, :index, :show]
-post '/orders/confirm' => 'orders#confirm'
-get '/orders/thanks' => 'orders#thanks'
+
+#resources :orders, only: [:new, :create, :index, :show]
+#post '/orders/confirm' => 'orders#confirm'
+#get '/orders/thanks' => 'orders#thanks'
 
 resources :cart_items, only: [:index, :update, :create]
 delete '/cart_items/:id' => 'cart_items#destroy'
@@ -33,7 +34,6 @@ devise_for :customers, controllers: {
 namespace :admin do
   resources :items, except: [:create]
   post '/items/new' => 'items#create'
-  resources :genres, only: [:index, :new, :edit, :update]
   post '/genres/new' => 'genres#create'
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show, :update]
