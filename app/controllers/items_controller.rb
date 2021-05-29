@@ -5,10 +5,12 @@ end
 
 def show
   @item = Item.find(params[:id])
+  @cart_item = CartItem.new
+  #@cart_item =
 end
 
 private
-  def list_params
+  def item_params
     params.require(:item).permit(:name, :introduction, :image, :genre_id, :price, :is_active)
   end
 

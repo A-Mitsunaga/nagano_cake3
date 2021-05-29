@@ -6,15 +6,13 @@
 <p><%= @item.introduction %></p>
 <h4>¥<%= @item.price %></h4>
 
-<select>
-  <option>個数選択</option>
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
-</select>
 
+<%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
 
+<%= f.select :amount, {'1':1, '2':2, '3':3, '4':4, '5':5}, { include_blank: '選択してください'} %>
+<%= f.hidden_field :item_id, :value => @item.id %>
+<%= f.hidden_field :customer_id, :value => current_customer.id %>
+<%= f.submit 'create' %>
+<% end %>
 <%= link_to 'カートに入れる', cart_items_path, class: "btn  btn-success" %>
 </div>
