@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
 #before_action :setup_cart_item!, only: [:create, :index, :destroy, :destroy_all]
   def index
    @cart_items = CartItem.all
-   
+
    #@cart_items = CartItem.all
    #@item = Item.find(params[:id])
   end
@@ -22,14 +22,20 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    if @cart_item.customer == current_customer
-      @cart_item.save
-      redirect_to cart_items_path
-    else
-      redirect_to item_path
+  @cart_item = current_customer.cart_items.build(cart_item_params)
+  @cart_items = current_customer.cart_items.all
+  @cart_items.each do |cart_item|
+    if cart_item.item_id == @cart_item.item_id
+      new_amount = cart_item.amount + @cart_item.amount
+      cart_item.update_attribute(:amount, new_amount)
+      @cart_item.delete
     end
   end
+  @cart_item.save
+  redirect_to :cart_items
+end
+
+
 
 private
   def cart_item_params
