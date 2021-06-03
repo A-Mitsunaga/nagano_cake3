@@ -12,7 +12,6 @@
 <%= f.select :amount, {'1':1, '2':2, '3':3, '4':4, '5':5}, { include_blank: '選択してください'} %>
 <%= f.hidden_field :item_id, :value => @item.id %>
 <%= f.hidden_field :customer_id, :value => current_customer.id %>
-<%= f.submit 'create' %>
+<%= f.submit 'カートに入れる', class: "btn btn-success" %>
 <% end %>
-<%= link_to 'カートに入れる', cart_items_path, class: "btn  btn-success" %>
 </div>

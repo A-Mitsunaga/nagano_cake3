@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 # strong parameter
+before_action :authenticate_customer!,except: [:top, :about]
 before_action :configure_permitted_parameters, if: :devise_controller?
 
 # def after_sign_in_path_for(resource)
@@ -8,12 +9,9 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 protect_from_forgery with: :exception
 helper_method :current_cart
 
-  def current_cart
-    if session[:cart_item_id]
-      @cart_item = CartItem.find(session[:cart_item_id])
-    else
-      @cart_item = CartItem.create
-      session[:cart_item_id] = @cart_item.id
+  def current_cart_item
+    if current_customer
+      current_cart_items = current_customer.cart_items || current_customer.create_cart_items!
     end
   end
 

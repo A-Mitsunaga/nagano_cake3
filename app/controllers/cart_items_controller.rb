@@ -1,10 +1,10 @@
 class CartItemsController < ApplicationController
-  #before_action :setup_cart_item!, only: [:create, :index, :destroy, :destroy_all]
-
-
+#before_action :setup_cart_item!, only: [:create, :index, :destroy, :destroy_all]
   def index
-  @cart_items = CartItem.all
-  #@items = Item.all
+   @cart_items = CartItem.all
+   
+   #@cart_items = CartItem.all
+   #@item = Item.find(params[:id])
   end
 
   def update
@@ -13,7 +13,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    cart_item = Cart_item.find(params[:id])
+    cart_item = CartItem.find(params[:id])
     cart_item.destroy
     redirect_to cart_items_path
   end
@@ -22,14 +22,13 @@ class CartItemsController < ApplicationController
   end
 
   def create
-   # if  @cart_item.blank?
-        #@cart_item = current_cart.cart_items.build(item_id: params[:item_id])
-    #end
-
     @cart_item = CartItem.new(cart_item_params)
-    #@cart_item.anount += params[:amount]
-    @cart_item.save
-    redirect_to cart_items_path
+    if @cart_item.customer == current_customer
+      @cart_item.save
+      redirect_to cart_items_path
+    else
+      redirect_to item_path
+    end
   end
 
 private
@@ -40,6 +39,5 @@ private
   def setup_cart_item!
     @cart_item = current_customer.cart_items.find_by(item_id: params[:item_id])
   end
-
 end
 

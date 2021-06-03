@@ -1,1 +1,18 @@
-配送先登録・一覧
+<h5>配送先登録/一覧</h5>
+
+<%= form_with model:@order_items, url:order_items_path, local:true do |f| %>
+<h6>郵便番号(ハイフンなし)</h6><%= f.text_field :postal_code %>
+<h6>住所</h6><%= f.text_field :address, class: "hoge" %>
+<h6>宛名</h6><%= f.text_field :full_name %>
+
+<%#= f.hidden_field :item_id, :value => @item.id %>
+<%#= f.hidden_field :customer_id, :value => current_customer.id %>
+
+<br>
+<%= f.submit '新規登録', class: "btn btn-success" %>
+
+<% end %>
+
+<h4><%#= @order_items.postal_code %></h4>
+<p><%#= @order_item.address %></p>
+<h4>¥<%#= @order_item.first_name %></h4>

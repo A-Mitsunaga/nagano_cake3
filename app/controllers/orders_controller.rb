@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def new
+    @orders =  Order.all
   end
 
   def confirm

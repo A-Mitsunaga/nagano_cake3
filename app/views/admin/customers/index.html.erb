@@ -6,15 +6,17 @@
       <th>会員ID</th>
       <th>氏名</th>
       <th>メールアドレス</th>
+      <th>ステータス</th>
     </tr>
   </thead>
   <tbody>
      <% @customers.each do |customer| %>
-     <%# genre.genre_id.each do |genre| %>
      <tr>
        <td><%= customer.id %></td>
-       <td><%= link_to customer.last_name, "/admin/customers/#{customer.id}" %></td>
+       <td><%= link_to customer.last_name, "/admin/customers/#{customer.id}" %><%= link_to customer.first_name, "/admin/customers/#{customer.id}" %></td>
        <td><%= customer.email %></td>
+       <td><%= customer.is_active %></td>
+
      </tr>
        <% end %>
        <%# end %>

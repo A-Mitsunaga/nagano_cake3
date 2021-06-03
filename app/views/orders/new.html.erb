@@ -1,3 +1,37 @@
-注文情報入力画面
+<h5>注文情報入力</h5>
 
-支払方法
+<h6>支払方法</h6>
+
+
+
+
+<h6>ご自身の住所</h6>
+
+
+<h6>登録済住所から選択</h6>
+
+
+
+
+<h6>新しいお届け先</h6>
+<%=form_with model: @order,url: orders_confirm_path, id: 'oeder', class:'order', local: true do |f| %>
+ <div class="field">
+    <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
+    <%= f.text_field :postal_code, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, "宛名" %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+<%= f.submit '確認画面へ進む', class: "btn btn-success" %>
+  <% end %>
+
+
+

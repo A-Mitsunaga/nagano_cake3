@@ -1,8 +1,16 @@
 <p>マイページ</p>
 
-<h4>登録情報</h4>
+<h5>登録情報</h5><%= link_to '編集する', edit_customer_registration_path, class: "btn  btn-success" %>
 
-<h2>氏名</h2><p><%= @customer.last_name %></p><p><%#= @customer.first_name_kana %></p>
-<h2>カナ</h2><p><%#= @customer.last_name %></p><p><%#= @customer.first_name_kana %></p>
+<h6>氏名</h6><%= @customer.last_name %> <%= @customer.first_name %>
+<h6>カナ</h6><%= @customer.last_name_kana %> <%= @customer.first_name_kana %>
+<h6>郵便番号</h6><%= @customer.postal_code %>
+<h6>住所</h6><%= @customer.address %>
+<h6>電話番号</h6><%= @customer.telephone_number %>
+<h6>メールアドレス</h6><%= @customer.email %>
 
-<h2>本文</h2><p><%#= @list.body %></p>
+<h5>配送先</h5>
+<%= link_to "一覧を見る", order_items_path, class: "btn btn-primary" %>
+
+<h5>注文履歴</h5>
+<%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
