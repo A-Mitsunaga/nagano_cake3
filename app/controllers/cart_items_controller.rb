@@ -33,7 +33,7 @@ class CartItemsController < ApplicationController
   end
   @cart_item.save
   redirect_to :cart_items
-end
+  end
 
 
 

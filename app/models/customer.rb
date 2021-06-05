@@ -1,6 +1,8 @@
 class Customer < ApplicationRecord
   #has_many :addresses, dependent: :destroy
   has_many :cart_items, dependent: :destroy
+  has_many :addresses, dependent: :destroy
+
   enum is_active: { '有効': true,'退会済': false }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

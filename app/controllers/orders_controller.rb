@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   def new
     @orders =  Order.all
-    #@customer = Customer.find(current_customer_params)
+    @customers = Customer.all#全員の住所を表示する
+    #@customer = Customer.find(customer_id: params[:customer_id])
   end
 
   def confirm
@@ -20,4 +21,11 @@ class OrdersController < ApplicationController
   def show
     #@items = Item.all
   end
+
+
+  private
+  def order_params
+    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :billing_amount)
+  end
+
 end
