@@ -7,12 +7,36 @@
 
 <%#= f.hidden_field :item_id, :value => @item.id %>
 <%#= f.hidden_field :customer_id, :value => current_customer.id %>
-
 <br>
 <%= f.submit '新規登録', class: "btn btn-success" %>
-
 <% end %>
 
 <h4><%#= @order_items.postal_code %></h4>
 <p><%#= @order_item.address %></p>
 <h4>¥<%#= @order_item.first_name %></h4>
+
+ <table>
+  <thead>
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @order_items.each do |item| %>
+
+     <tr>
+       <td><%=  %></td>
+       <td><%=  %></td>
+       <td><%=  %></td>
+       <td><%= %></td>
+       <td></td>
+     </tr>
+
+       <% end %>
+  </tbody>
+</table>
+jjjjjj
+

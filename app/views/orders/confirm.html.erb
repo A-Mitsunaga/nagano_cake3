@@ -1,1 +1,31 @@
-注文情報確認画面
+<h6>注文情報確認</h6>
+
+  <table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>送料</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @cart_items.each do |item| %>
+  
+     <tr>
+       <td><%= item.item.name %></td>
+       <td><%= item.item.price %></td>
+       <td><%= item.amount %></td>
+       <td><%= %></td>
+       <td><%#= item.shipping_cost %></td>
+     </tr>
+       <% end %>
+  </tbody>
+</table>
+
+
+
+<h6>支払方法</h6>
+<h6>お届け先</h6>
+

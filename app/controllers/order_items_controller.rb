@@ -2,7 +2,6 @@ class OrderItemsController < ApplicationController
 
   def index
      @order_items = OrderItem.all
-     
 
     # @order_item = OrderItem.find(params[:id])
   end

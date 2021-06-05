@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
   def new
     @orders =  Order.all
+    #@customer = Customer.find(current_customer_params)
   end
 
   def confirm
+    @cart_items = CartItem.all
   end
 
   def thanks
