@@ -22,7 +22,7 @@ class CartItemsController < ApplicationController
   end
 
   def create
-  @cart_item = current_customer.cart_items.build(cart_item_params)
+  
   @cart_items = current_customer.cart_items.all
   @cart_items.each do |cart_item|
     if cart_item.item_id == @cart_item.item_id

@@ -12,7 +12,7 @@
   </thead>
   <tbody>
       <% @cart_items.each do |item| %>
-  
+
      <tr>
        <td><%= item.item.name %></td>
        <td><%= item.item.price %></td>
@@ -28,4 +28,8 @@
 
 <h6>支払方法</h6>
 <h6>お届け先</h6>
+<% @orders.each do |order| %>
+<%= order.patment_method %>
+<%= order.address %>
 
+<% end %>
