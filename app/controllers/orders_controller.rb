@@ -1,19 +1,31 @@
 class OrdersController < ApplicationController
   def new
-    #@order = Order.new
-    #@orders =  Order.all
-    @customers = Customer.all#全員の住所を表示する
-    #@customer = Customer.find(customer_id: params[:customer_id])
+    @order = Order.new
+
   end
 
   def confirm
     @cart_items = CartItem.all
     @orders = Order.all
+    @order = Order.new(order_params)
+    if params[:order][:address_status] == "ご自身の住所"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.full_name
 
-    @order = Order.new
-    #@cart_items = current_customer.cart_items
+    elsif params[:order][:address_status] == "登録済住所から選択"
+        @address = Address.find(params[:address_id])
+        @order.postal_code = @address.postal_code
+        @order.address = @address.address
+        @order.name = @address.name
 
-    #@order.payment_method = params[:order][:payment_method]
+
+    else params[:order][:address_status] == "新しい住所"
+        params[:order][:postal_code] = @order.postal_code
+        params[:order][:address] = @order.address
+        params[:order][:name] = @order.name
+
+    end
 
   end
 
@@ -21,7 +33,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_customer.order.build(order_params)
+    #@order = current_customer.order.build(order_params)
+
+
   end
 
   def index
@@ -34,7 +48,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :billing_amount)
+    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shipping_cost, :billing_amount, :payment_method)
   end
 
 end

@@ -18,7 +18,7 @@
 
   <body>
     <% if customer_signed_in? %>
-    <p>ようこそ、さん</p>
+    <p>ようこそ、<%= current_customer.last_name %>さん</p>
       <div class="text-right">
         <button type="button" class="btn btn-light"><%= link_to "マイページ", customers_my_page_path %></button>
         <button type="button" class="btn btn-light"><%= link_to "商品一覧", items_path %></button>

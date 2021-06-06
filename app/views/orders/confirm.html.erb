@@ -17,7 +17,7 @@
        <td><%= item.item.name %></td>
        <td><%= item.item.price %></td>
        <td><%= item.amount %></td>
-       <td><%= %></td>
+       <td><%#= item.total_price %></td>
        <td><%#= item.shipping_cost %></td>
      </tr>
        <% end %>
@@ -25,11 +25,17 @@
 </table>
 
 
+<strong>支払方法</strong>
+<%= form_with model:@order, url:orders_confirm_path, local:true do |f| %>
+<%= f.hidden_field :payment_method %>
+<%= @order.payment_method %>
+<br>
 
-<h6>支払方法</h6>
-<h6>お届け先</h6>
-<% @orders.each do |order| %>
-<%= order.patment_method %>
-<%= order.address %>
+<strong>お届け先</strong>
 
+<%= f.hidden_field :address %>
+〒<%= @order.postal_code %>
+<%= @order.address %>
+<br>
+<%= @order.name %>
 <% end %>
