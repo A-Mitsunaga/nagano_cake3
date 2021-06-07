@@ -37,9 +37,12 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @order = Order.new
+    @cart_items = CartItem.all
   end
 
   def show
+
   end
 
 
