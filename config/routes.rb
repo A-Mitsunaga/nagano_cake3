@@ -6,8 +6,9 @@ get '/about' => 'homes#about'
 resource :customers, only: [:edit, :update]
 get '/customers/my_page' => 'customers#show'
 patch 'customers/edit' => 'customers#update'
-get '/customers/unsubscribe' => 'customers#unsubscribe'
 patch '/customers/withdrawal' => 'customers#withdrawal'
+get '/customers/unsubscribe' => 'customers#unsubscribe'
+
 
 resources :items, only: [:index, :show]
 
@@ -19,8 +20,8 @@ resources :orders, only: [:new, :create, :index, :show]
 resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
 resources :cart_items, only: [:index, :update, :create]
-delete '/cart_items/:id' => 'cart_items#destroy'
-delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+delete '/cart_items/:id' => 'cart_items#destroy', as:'destroy_cart_item'
+delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as:'destroy_all_cart_item'
 
 
 #post '/customers/sign_up' => 'customers/registrations#create'
