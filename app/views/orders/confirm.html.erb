@@ -24,16 +24,16 @@
 <strong>送料</strong>
 <%= @order.shipping_cost %>円
 <br>
+<strong>商品合計</strong>
+<%#= sum((item.item.price * item.amount)) %>
+
 
 <strong>支払方法</strong>
 <%= form_with model:@order, url:orders_confirm_path, local:true do |f| %>
-<%= f.hidden_field :payment_method %>
 <%= @order.payment_method %>
 <br>
-
 <strong>お届け先</strong>
 
-<%= f.hidden_field :address %>
 〒<%= @order.postal_code %>
 <%= @order.address %>
 <br>
