@@ -1,7 +1,31 @@
 <h5>注文履歴詳細</h5>
 
 <strong>注文情報</strong>
-<p>注文日</p><%#= @order.created_at %>
-<p>配送先</p>
-<p>支払方法</p>
+<p>注文日</p><%= @order.created_at %>
+<p>配送先</p><%= @order.postal_code %><%= @order.address %><%= @order.name %>
+<p>支払方法</p><%= @order.payment_method %>
 
+<br>
+<strong>注文内容</strong>
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品</th>
+      <th>単価（税込）</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+     <tr>
+<% @cart_items.each do |item| %>
+       <td><%= item.item.name %></td>
+       <td><%= item.item.price %></td>
+       <td><%= item.amount %></td>
+       <td><%= (item.item.price * item.amount) %></td>
+       <% end %>
+     </tr>
+  </tbody>
+</table>
