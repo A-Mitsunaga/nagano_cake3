@@ -7,18 +7,7 @@ class CartItemsController < ApplicationController
    #@item = Item.find(params[:id])
   end
 
-  def update
-    @cart_item.update(amount params[:amount])
-    redirect_to current_cart
-  end
-
-  def destroy
-  end
-
-  def destroy_all
-  end
-
-  def create
+ def create
   @cart_item = current_customer.cart_items.build(cart_item_params)
   @cart_items = current_customer.cart_items.all
   @cart_items.each do |cart_item|
@@ -31,6 +20,25 @@ class CartItemsController < ApplicationController
   @cart_item.save
   redirect_to :cart_items
   end
+
+  def update
+    @cart_item.update(amount params[:amount])
+    redirect_to current_cart
+  end
+
+  #def destroy
+    #cart_item = CartItem.find(params[:id])
+    #cart_item.destroy
+    #redirect_to cart_items_path
+  #end
+
+  #def destroy_all
+    #cart_item = CartItem.all
+    #cart_item.destroy_all
+    #redirect_to cart_items_path
+  #end
+
+
 
 
 
@@ -49,7 +57,7 @@ class CartItemsController < ApplicationController
 
 private
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :customer_id, :amount)
+    params.require(:cart_item).permit(:item_id, :customer_id, :amount, :image)
   end
 
   def setup_cart_item!

@@ -9,8 +9,19 @@ class CustomersController < ApplicationController
 
   def update
     customer = current_customer
-    current_customer.update
-    redirect_to customer_my_page_path(current_customer)
+    current_customer.update(customer_params)
+    redirect_to customers_my_page_path
+  end
+
+  def unsustainable
+    @customer = Customer.find_by(name: params[:name])
+  end
+
+  def withdrawal
+  @customer = Customer.find_by(name: params[:name])
+  @customer.update(is_valid: false)
+  resset_session
+  redirect_to root_path
   end
 
 

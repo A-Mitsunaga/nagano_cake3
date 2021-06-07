@@ -20,29 +20,27 @@ class OrdersController < ApplicationController
         @order.name = @address.name
 
 
-    else params[:order][:address_status] == "新しい住所"
+    else params[:order][:address_status] == "新しいお届け先"
         params[:order][:postal_code] = @order.postal_code
         params[:order][:address] = @order.address
         params[:order][:name] = @order.name
 
     end
 
-  end
-
+    end
   def thanks
   end
 
   def create
-    #@order = current_customer.order.build(order_params)
 
 
   end
 
   def index
+    @orders = Order.all
   end
 
   def show
-    #@items = Item.all
   end
 
 
