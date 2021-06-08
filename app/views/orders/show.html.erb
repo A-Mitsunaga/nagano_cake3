@@ -29,3 +29,17 @@
      </tr>
   </tbody>
 </table>
+
+
+<srrong>請求情報</srrong>
+
+  <% sum = 0 %>
+   <% @cart_items.each do |item| %>
+   <!--billing_amount-->
+    <% sum += (item.item.price * item.amount) %>
+     <% end %>
+<strong>送料</strong><%= @order.shipping_cost %>
+<strong>商品合計</strong><%= sum %>
+<strong>請求金額</strong><%= sum + @order.shipping_cost %>
+<br>
+<br>
