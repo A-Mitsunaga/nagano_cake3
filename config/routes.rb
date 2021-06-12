@@ -19,11 +19,13 @@ resources :orders, only: [:new, :create, :index, :show]
 #resources :order_items, only: [:index, :edit, :create, :update, :destroy]
 resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-resources :cart_items, only: [:index, :update, :create]
-delete '/cart_items/:id' => 'cart_items#destroy', as:'destroy_cart_item'
-delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as:'destroy_all_cart_item'
-
-
+resources :cart_items, only: [:index, :update, :create] do
+#delete '/cart_items/:id' => 'cart_items#destroy', as:'destroy_cart_item'
+#delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as:'destroy_all_cart_item'
+collection do
+  delete 'destroy_all'
+end
+end
 #post '/customers/sign_up' => 'customers/registrations#create'
 
 namespace :admin do
