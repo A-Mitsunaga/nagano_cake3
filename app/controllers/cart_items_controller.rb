@@ -26,18 +26,15 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item = current_customer.cart_items
-    @cart_item.destroy
-    redirect_to cart_items_path
+    #@cart_item = current_customer.cart_items.find_by(item_id: params[:item_id])
+    #@cart_item.destroy
+    #redirect_to cart_items_path
 
   end
 
   def destroy_all
-    @cart_items = current_customer.cart_items.all
-    @cart_items.destroy_all
+    CartItem.destroy_all
     redirect_to cart_items_path
-    #cart_item.destroy_all
-    #redirect_to cart_items_path
   end
 
 

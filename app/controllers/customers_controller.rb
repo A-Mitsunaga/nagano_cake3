@@ -13,13 +13,15 @@ class CustomersController < ApplicationController
     redirect_to customers_my_page_path
   end
 
-  def unsustainable
-    @customer = Customer.find_by(name: params[:name])
+  def unsubscribe
+    @customer = current_customer
+    #@customer = Customer.find_by(name: params[:name])
   end
 
   def withdrawal
-  @customer = Customer.find_by(name: params[:name])
-  @customer.update(is_valid: false)
+  @customer = current_customer
+  #@customer = Customer.find_by(name: params[:name])
+  @customer.update(customer_params)
   resset_session
   redirect_to root_path
   end
