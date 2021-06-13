@@ -1,4 +1,4 @@
-<h6><%= current_customer.full_name %>さんの会員情報編集</h6>
+<h6><%= @customer.full_name %>さんの会員情報編集</h6>
 
 <%= form_with model:@customer, url:"/admin/customers/#{@customer.id}", local:true do |f| %>
 

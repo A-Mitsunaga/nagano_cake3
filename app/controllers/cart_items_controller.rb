@@ -2,8 +2,7 @@ class CartItemsController < ApplicationController
 #before_action :setup_cart_item!, only: [:create, :index, :destroy, :destroy_all]
   def index
    @cart_items = current_customer.cart_items.all
-   #@cart_items = CartItem.all
-   #@item = Item.find(params[:id])
+
   end
 
  def create
@@ -21,8 +20,13 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item.update(amount params[:amount])
-    redirect_to current_cart
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+      # flash[:notice] = 'カート内のsが更新されました'
+    # else
+      # flash[:alert] = 'カート内のギフトの更新に失敗しました'
+    # end
+    redirect_to cart_items_path
   end
 
   def destroy
@@ -39,7 +43,7 @@ class CartItemsController < ApplicationController
 
 private
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :customer_id, :amount, :image, :name, :price)
+    params.require(:cart_item).permit(:amount, :item_id)
   end
 
   def setup_cart_item!

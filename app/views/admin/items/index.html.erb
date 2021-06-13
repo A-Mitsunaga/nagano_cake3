@@ -1,31 +1,28 @@
+<h6>商品一覧</h6>
+<div class="text-right">
+<%= link_to "+", new_admin_item_path %>
+</div>
 
-<h1>商品一覧</h1>
-
-<%= link_to "商品追加", new_admin_item_path %>
-<!--＋ボタンに変更予定-->
-
-<table>
+<table class="table table-sm">
   <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税込価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
+    <tr class="table-warning">
+      <th scope="col">商品ID</th>
+      <th scope="col">商品名</th>
+      <th scope="col">税込価格</th>
+      <th scope="col">ステータス</th>
     </tr>
   </thead>
   <tbody>
-     <% @items.each do |item| %>
-     <%# genre.genre_id.each do |genre| %>
-     <tr>
-       <td><%= item.id %></td>
-       <td><%= link_to item.name, "/admin/items/#{item.id}" %></td>
-       <td><%= item.price %></td>
-       <td><%= item.genre_id %></td>
-       <td><%= item.is_active %></td>
-     </tr>
-       <% end %>
-       <%# end %>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= link_to item.name, "/admin/items/#{item.id}" %></td>
+      <td><%= item.price %></td>
+      <td><%= item.is_active %></td>
+    </tr>
+    <% end %>
   </tbody>
 </table>
+
+
 <%= paginate @items %>
