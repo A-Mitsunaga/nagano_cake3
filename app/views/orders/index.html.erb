@@ -1,29 +1,28 @@
 <h6>注文履歴一覧</h6>
 
-<table>
+<table class="table">
   <thead>
-    <tr>
-      <th>注文日</th>
-      <th>配送先</th>
-      <th>注文商品</th>
-      <th>支払金額</th>
-      <th>注文詳細</th>
-      <th></th>
+    <tr class="table-warning">
+      <th scope="col">注文日</th>
+      <th scope="col">配送先</th>
+      <th scope="col">注文商品</th>
+      <th scope="col">支払金額</th>
+      <th scope="col">注文詳細</th>
     </tr>
   </thead>
   <tbody>
-     <tr>
-        <% sum = 0 %>
-      <% @orders.each do |order| %>
+    <tr>
+      <% sum = 0 %>
+      <%= @orders.each do |order| %>
       <% @cart_items.each do |item| %>
-       <td><%= order.created_at %></td>
-       <td><%= order.address %></td>
-       <td><%= item.item.name %></td>
+      <td><%= order.created_at %></td>
+      <td><%= order.address %></td>
+      <td><%= item.item.name %></td>
        <% sum += (item.item.price * item.amount) %>
        <td><%= sum + @order.shipping_cost %>円</td>
        <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
-     </tr>
-       <% end %>
-       <% end %>
+    </tr>
+    <% end %>
+    <% end %>
   </tbody>
 </table>

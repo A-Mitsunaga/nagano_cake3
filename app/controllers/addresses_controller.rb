@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
   def index
-     @addresses = Address.all
+     #@addresses = Address.all
+    @addresses = current_customer.addresses.all
      @address = Address.new
  # @order_item = OrderItem.find(params[:id])
   end
@@ -29,7 +30,7 @@ class AddressesController < ApplicationController
 
 private
   def address_params
-    params.require(:address).permit(:name, :postal_code, :address)
+    params.require(:address).permit(:name, :postal_code, :address, :customer_id)
   end
 
 end

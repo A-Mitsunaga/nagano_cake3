@@ -1,14 +1,16 @@
 <p>注文履歴詳細</p>
 
-<h6>購入者</h6>
-<h6>注文日</h6>
-<h6>配送先</h6>
-<h6>支払方法</h6>
+<strong>購入者</strong><%= @order.customer.full_name %><br>
+<strong>注文日</strong><%= @order.created_at %><br>
+<strong>配送先</strong><%= @order.address %><br>
+<strong>支払方法</strong><%= @order.payment_method %>
 
-
-<table>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <table class="table">
   <thead>
-    <tr>
+    <tr class="table-warning">
       <th>商品名</th>
       <th>単価（税込）</th>
       <th>数量</th>
@@ -16,16 +18,28 @@
     </tr>
   </thead>
   <tbody>
-     <%= @items.each do |item| %>
-     <%# genre.genre_id.each do |genre| %>
+     <% @cart_items.each do |item| %>
      <tr>
-       <td><%= link_to customer.name, "/admin/customers/#{customer.id}" %></td>
-       <td><%= item.price %></td>
+       <td><%= item.item.name %></td>
+       <td><%= item.item.price %></td>
        <td><%= item.amount %></td>
-       <td><%#=小計 %></td>
+       <td><%= (item.item.price * item.amount) %></td>
      </tr>
        <% end %>
-       <%# end %>
   </tbody>
 </table>
 
+    </div>
+    <div class="col-sm">
+      <% sum = 0 %>
+   <% @cart_items.each do |item| %>
+   <!--billing_amount-->
+    <% sum += (item.item.price * item.amount) %>
+     <% end %>
+
+<strong>商品合計</strong><%= sum %>円<br>
+<strong>送料</strong><%= @order.shipping_cost %>円<br>
+<strong>請求金額合計</strong><%= sum + @order.shipping_cost %>円
+    </div>
+  </div>
+</div>

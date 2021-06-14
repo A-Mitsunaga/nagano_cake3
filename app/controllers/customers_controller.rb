@@ -19,7 +19,6 @@ class CustomersController < ApplicationController
 
   def withdrawal
     @customer = current_customer
-  #customer = current_customer
   @customer.update(is_active: false)
   redirect_to root_path
   end

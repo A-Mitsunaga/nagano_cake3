@@ -37,6 +37,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    #@orders = current_customer.orders.all
     @order = Order.new
     @cart_items = CartItem.all
   end
