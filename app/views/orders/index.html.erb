@@ -13,7 +13,7 @@
   <tbody>
     <tr>
       <% sum = 0 %>
-      <%= @orders.each do |order| %>
+      <% @orders.each do |order| %>
       <% @cart_items.each do |item| %>
       <td><%= order.created_at %></td>
       <td><%= order.address %></td>

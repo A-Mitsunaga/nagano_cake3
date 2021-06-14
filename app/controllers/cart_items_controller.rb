@@ -2,7 +2,8 @@ class CartItemsController < ApplicationController
 #before_action :setup_cart_item!, only: [:create, :index, :destroy, :destroy_all]
   def index
    @cart_items = current_customer.cart_items.all
-
+   #@item = current_customer.cart_items.all
+   
   end
 
   def create
@@ -21,8 +22,6 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    #@cart_item.update(amount params[:amount])
-    #redirect_to current_cart
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(amount: params[:cart_item][:amount])
     redirect_to cart_items_path

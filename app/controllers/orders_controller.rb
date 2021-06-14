@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def new
     @order = Order.new
-
+    @addresses = current_customer.addresses.all
   end
 
   def confirm
@@ -36,10 +36,11 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
-    #@orders = current_customer.orders.all
+    #@orders = Order.all
+    @orders = current_customer.orders.all
     @order = Order.new
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
+    #@cart_items = CartItem.all
   end
 
   def show

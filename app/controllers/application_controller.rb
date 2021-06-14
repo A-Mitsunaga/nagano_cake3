@@ -1,23 +1,29 @@
 class ApplicationController < ActionController::Base
 # strong parameter
 #before_action :authenticate_customer!,except: [:top, :about]
-#before_action :configure_permitted_parameters, if: :devise_controller?
+before_action :configure_permitted_parameters, if: :devise_controller?
 
 # def after_sign_in_path_for(resource)
     # public_items_path
   # end
-protect_from_forgery with: :exception
-helper_method :current_cart
+#protect_from_forgery with: :exception
+#helper_method :current_cart
 
-  def current_cart_item
-    if current_customer
-      current_cart_items = current_customer.cart_items || current_customer.create_cart_items!
-    end
-  end
+  #def current_cart_item
+    #if current_customer
+      #current_cart_items = current_customer.cart_items || current_customer.create_cart_items!
+    #end
+  #end
+
+
 
 
 
 protected
+#def after_admin_sign_in_path_for(resource)
+    #admin_path
+#end
+
 def configure_permitted_parameters
   devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number])
 end
