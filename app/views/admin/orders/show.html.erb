@@ -1,4 +1,4 @@
-<p>注文履歴詳細</p>
+<span style="color:#000000; background-color:#d3d3d3;">注文履歴詳細</span>
 
 <strong>購入者</strong><%= @order.customer.full_name %><br>
 <strong>注文日</strong><%= @order.created_at %><br>
@@ -18,9 +18,9 @@
     </tr>
   </thead>
   <tbody>
-     <%= @orders.each do |order| %>
+     <% @orders.each do |order| %>
      <tr>
-       <td><%#= item.item.name %></td>
+       <td><%#= order.items.name %></td>
        <td><%#= item.item.price %></td>
        <td><%#= item.amount %></td>
        <td><%#= (item.item.price * item.amount) %></td>

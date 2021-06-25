@@ -14,14 +14,13 @@ class CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = current_customer
+    @customer = Customer.find(current_customer.id)
   end
 
   def withdrawal
-  @customer = current_customer
-  @customer.update(is_active: false)
-  reset_session
-  redirect_to root_path
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_active: "退会")
+    redirect_to root_path
   end
 
 

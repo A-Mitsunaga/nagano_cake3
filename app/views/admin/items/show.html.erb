@@ -1,4 +1,4 @@
-<strong>商品詳細</strong>
+<span style="color:#000000; background-color:#d3d3d3;">商品詳細</span>
 <div class="container">
   <div class="row">
     <div class="col-sm">
@@ -15,7 +15,10 @@
       <p><%= @item.price %>円</p>
 
       <strong>販売ステータス</strong>
-      <p><%= @item.is_active %></p>
+      <br>
+      <font color="green"><%= @item.is_active %></font>
+      
+      <br>
       <%= link_to "編集する", edit_admin_item_path, class: "btn btn-success" %>
     </div>
 

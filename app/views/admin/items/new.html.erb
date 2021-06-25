@@ -1,12 +1,15 @@
+<span style="color:#000000; background-color:#d3d3d3;">商品新規登録</span>
 
-<h6>商品新規登録</h6>
 <%= form_with model:@item, url:'/admin/items/new', local:true do |f| %>
 <!--<div class="field"></div>-->
 
-<div class="text-center">
-<h6>商品画像</h6><%= f.attachment_field :image %>
-
-
+<!--<div class="text-center">-->
+<div class="form-group">
+  <label class="col-sm-3">商品画像</label>
+    <div class="col-sm-9">
+      <%= f.attachment_field :image %>
+    </div>
+</div>
 <h6>商品名</h6>
 <%= f.text_field :name %>
 <%#= text_field_tag "name", "商品名" %>
@@ -32,3 +35,4 @@
 
 <% end %>
 </div>
+

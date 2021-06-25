@@ -1,5 +1,5 @@
 <!--管理者トップページ-->
-<h5>注文履歴一覧</h5>
+<span style="color:#000000; background-color:#d3d3d3;">注文履歴一覧</span>
 <table class="table">
   <thead>
     <tr class="table-warning">
@@ -22,3 +22,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @orders %>
