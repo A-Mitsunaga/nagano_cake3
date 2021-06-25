@@ -18,12 +18,12 @@
     </tr>
   </thead>
   <tbody>
-     <%= @cart_items.each do |item| %>
+     <%= @orders.each do |order| %>
      <tr>
-       <td><%= item.item.name %></td>
-       <td><%= item.item.price %></td>
-       <td><%= item.amount %></td>
-       <td><%= (item.item.price * item.amount) %></td>
+       <td><%#= item.item.name %></td>
+       <td><%#= item.item.price %></td>
+       <td><%#= item.amount %></td>
+       <td><%#= (item.item.price * item.amount) %></td>
      </tr>
        <% end %>
   </tbody>
@@ -32,10 +32,10 @@
     </div>
     <div class="col-sm">
       <% sum = 0 %>
-   <% @cart_items.each do |item| %>
+   <%# @cart_items.each do |item| %>
    <!--billing_amount-->
-    <% sum += (item.item.price * item.amount) %>
-     <% end %>
+    <%# sum += (item.item.price * item.amount) %>
+     <%# end %>
 
 <strong>商品合計</strong><%= sum %>円<br>
 <strong>送料</strong><%= @order.shipping_cost %>円<br>

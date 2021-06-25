@@ -42,46 +42,32 @@
     <td><%= sum + @order.shipping_cost %></td>
   </tr>
 </table>
+
+
     </div>
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br>
 <strong>注文内容</strong>
 <br>
+ <table class="table table-inverse">
+    <thead>
+      <tr class="table-warning">
+      <th>商品</th>
+      <th>単価（税込）</th>
+      <th>個数</th>
+      <th>小計</th>
+      </tr>
+    </thead>
 
-<table class="table">
-  <thead>
-    <tr class="table-warning">
-      <th scope="col">商品</th>
-      <th scope="col">単価（税込）</th>
-      <th scope="col">個数</th>
-      <th scope="col">小計</th>
-    </tr>
-  </thead>
   <tbody>
-    <tr>
-<% @cart_items.each do |item| %>
-      <td><%= item.item.name %></td>
-      <td><%= item.item.price %></td>
+    <% @cart_items.each do |item| %>
+      <tr>
+      <td><%= item.item.name %>
+      <td><%= item.item.price %>
       <td><%= item.amount %></td>
       <td><%= (item.item.price * item.amount) %></td>
+      </tr>
       <% end %>
-    </tr>
   </tbody>
-</table>
-

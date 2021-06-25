@@ -18,8 +18,9 @@ class CustomersController < ApplicationController
   end
 
   def withdrawal
-    @customer = current_customer
+  @customer = current_customer
   @customer.update(is_active: false)
+  reset_session
   redirect_to root_path
   end
 
@@ -30,3 +31,4 @@ private
   end
 
 end
+

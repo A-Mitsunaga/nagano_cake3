@@ -1,5 +1,11 @@
 <h6>注文情報確認</h6>
-
+<%# if @order.errors.any? %>
+  <%#= @order.errors.count %>
+  <!--件のエラーが発生しました-->
+  <%# @order.errors.full_messages.each do |message| %>
+    <%#= message %>
+  <%# end %>
+<%# end %>
   <table>
   <thead>
     <tr>
@@ -10,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-      <% @cart_items.each do |item| %>
+      <%= @cart_items.each do |item| %>
      <tr>
        <td><%= item.item.name %></td>
        <td><%= item.item.price %></td>

@@ -1,6 +1,7 @@
-<h6>商品一覧</h6>
+<span style="color:#000000; background-color:#d3d3d3;">商品一覧</span>
+
 <div class="text-right">
-<%= link_to "+", new_admin_item_path %>
+<%= link_to "+", new_admin_item_path, class:"btn btn-outline-dark" %>
 </div>
 
 <table class="table table-sm">
@@ -18,7 +19,10 @@
       <td><%= item.id %></td>
       <td><%= link_to item.name, "/admin/items/#{item.id}" %></td>
       <td><%= item.price %></td>
-      <td><%= item.is_active %></td>
+      <td>
+        <font color="green">
+        <%= item.is_active %></td>
+        </font>
     </tr>
     <% end %>
   </tbody>
