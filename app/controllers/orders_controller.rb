@@ -47,7 +47,8 @@ class OrdersController < ApplicationController
   def index
     @orders = current_customer.orders.all
     #@order = Order.new
-    #@cart_items = CartItem.all
+
+    #@cart_items = current_customer.cart_items.all
 
   end
 

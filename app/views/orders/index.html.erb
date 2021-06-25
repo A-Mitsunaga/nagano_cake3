@@ -1,4 +1,4 @@
-<h6>注文履歴一覧</h6>
+<span style="color:#000000; background-color:#d3d3d3;">注文履歴一覧</span>
 
  <table class="table table-inverse">
     <thead>
@@ -15,7 +15,6 @@
 
   <tbody>
     <% @orders.each do |order| %>
-    <%# @cart_items.each do |item| %>
       <tr>
       <td><%= order.created_at %></td>
       <td>
@@ -24,10 +23,11 @@
           <%= order.name %>
       </td>
       <td>
+        <%# @cart_items.each do |item| %>
         <%#= order.cart_items.each do |item| %>
         <%#= item.item.name %>
       </td>
-      <% end %>
+      <%# end %>
       <td><%#= (item.item.price * item.amount) %>円</td>
       <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
       </tr>

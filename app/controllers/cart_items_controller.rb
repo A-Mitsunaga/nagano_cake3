@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
 #before_action :setup_cart_item!, only: [:create, :index, :destroy, :destroy_all]
   def index
    @cart_items = current_customer.cart_items.all
-   #@items = Item.find(params[:id])
+   #@items = current_customer.cart_items.all
 
   end
 
