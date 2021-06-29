@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    #@orders = current_customer.cart_items.all
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
     if params[:address_status] == "ご自身の住所"
@@ -31,14 +30,16 @@ class OrdersController < ApplicationController
   end
 
   def create
-    #order = Order.new(order_params)
-    #order.save!
-    #redirect_to orders_thanks_path
     order = Order.new(order_params)
     if order.save!
+      current_customer.cart_items.each do |cart_item|
+      @order_item = OrderItem.new(order_id: order.id, item_id: cart_item.item.id, amount: cart_item.amount, price: cart_item.item.price )
+      @order_item.save
+      end
+      current_customer.cart_items.delete_all
+
     redirect_to orders_thanks_path
-    #下記変更あり。購入後カートを空にしたい。
-    #current_customer.cart_items.delete_all
+    #購入後カートを空にしたい。
     else
     render :new
     end
@@ -46,9 +47,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
-    #@order = Order.new
-
-    #@cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items.all
 
   end
 
@@ -56,8 +55,7 @@ class OrdersController < ApplicationController
     @orders = Order.all
     @order = Order.find(params[:id])
     @cart_items = current_customer.cart_items.all
-
-  end
+   end
 
 
   private

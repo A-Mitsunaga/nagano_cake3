@@ -54,6 +54,7 @@
  <table class="table table-inverse">
     <thead>
       <tr class="table-warning">
+
       <th>商品</th>
       <th>単価（税込）</th>
       <th>個数</th>
@@ -62,7 +63,8 @@
     </thead>
 
   <tbody>
-    <% @cart_items.each do |item| %>
+    <!--注文商品-->
+    <%= @cart_items.each do |item| %>
       <tr>
       <td><%= item.item.name %>
       <td><%= item.item.price %>

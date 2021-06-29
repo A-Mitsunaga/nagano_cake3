@@ -14,9 +14,9 @@
       <td><%= link_to order.created_at, "/admin/orders/#{order.id}" %></td>
       <td><%= order.customer.full_name %></td>
       <td>
-        <%# order.item.each do |item| %>
-        <%#= item.amount %>
-        <%# end %>
+        <% @order_items.each do |item| %>
+        <%= order_item.amount %>
+        <% end %>
       </td>
     </tr>
     <% end %>

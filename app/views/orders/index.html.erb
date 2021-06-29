@@ -13,26 +13,26 @@
       </tr>
     </thead>
 
-  <tbody>
+<tbody>
     <% @orders.each do |order| %>
       <tr>
-      <td><%= order.created_at %></td>
+      <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
       <td>
         〒<%= order.postal_code %>
           <%= order.address %><br>
           <%= order.name %>
       </td>
       <td>
-        <%# @cart_items.each do |item| %>
-        <%#= order.cart_items.each do |item| %>
-        <%#= item.item.name %>
+        <% order.order_items.each do |order_item| %>
+
+            <%= order_item.item.name %>
+
+        <% end %>
       </td>
-      <%# end %>
+      <td></td>
       <td><%#= (item.item.price * item.amount) %>円</td>
       <td><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
       </tr>
 
       <% end %>
   </tbody>
-
-
